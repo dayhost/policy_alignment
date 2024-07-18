@@ -233,8 +233,7 @@ def main():
     path_name = "./img"
     
     for env_name in ["cart_pole"]:
-        for alg_name in ["dqn"]:
-        # for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
+        for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
             training_epoch = 5000
 
             zero_reward_list = []
@@ -274,139 +273,138 @@ def main():
                                         env_name=env_name, alg_name=alg_name, file_path=path_name)
             
     
-    # for env_name in ["mountain_car"]:
-    #     for alg_name in ["ppo"]:
-    #     # for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
-    #         if alg_name == "dqn":
-    #             training_epoch = 5000
-    #         else:
-    #             training_epoch = 10000
+    for env_name in ["mountain_car"]:
+        for alg_name in ["ppo"]:
+        # for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
+            if alg_name == "dqn":
+                training_epoch = 5000
+            else:
+                training_epoch = 10000
 
-    #         zero_reward_list = []
-    #         non_zero_reward_list = []
+            zero_reward_list = []
+            non_zero_reward_list = []
 
-    #         zero_count_list = []
-    #         non_zero_count_list = []
+            zero_count_list = []
+            non_zero_count_list = []
 
-    #         param_dict = None
+            param_dict = None
 
-    #         for random_seed in range(5):
-    #             for zero_non_zero_flag in ["non_zero", "zero"]:
-    #                 reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
-    #                                                                       algorithm_name=alg_name, 
-    #                                                                       zero_non_zero_flag=zero_non_zero_flag, 
-    #                                                                       training_epoch=training_epoch, load_model=True)
+            for random_seed in range(5):
+                for zero_non_zero_flag in ["non_zero", "zero"]:
+                    reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
+                                                                          algorithm_name=alg_name, 
+                                                                          zero_non_zero_flag=zero_non_zero_flag, 
+                                                                          training_epoch=training_epoch, load_model=True)
                     
-    #                 if zero_non_zero_flag == "zero":
-    #                     zero_reward_list.append(reward_list)
-    #                     zero_count_list.append(count_list)
-    #                 else:
-    #                     non_zero_reward_list.append(reward_list)
-    #                     non_zero_count_list.append(count_list)
+                    if zero_non_zero_flag == "zero":
+                        zero_reward_list.append(reward_list)
+                        zero_count_list.append(count_list)
+                    else:
+                        non_zero_reward_list.append(reward_list)
+                        non_zero_count_list.append(count_list)
 
-    #         pickle.dump(
-    #             {
-    #                 "zero_reward_list": zero_reward_list,
-    #                 "zero_count_list": zero_count_list,
-    #                 "non_zero_reward_list": non_zero_reward_list,
-    #                 "non_zero_count_list": non_zero_count_list,
-    #                 "param_dict": param_dict
-    #             },
-    #             open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
-    #         )
+            pickle.dump(
+                {
+                    "zero_reward_list": zero_reward_list,
+                    "zero_count_list": zero_count_list,
+                    "non_zero_reward_list": non_zero_reward_list,
+                    "non_zero_count_list": non_zero_count_list,
+                    "param_dict": param_dict
+                },
+                open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
+            )
 
-    #         plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
-    #                                     env_name=env_name, alg_name=alg_name, file_path=path_name)
+            plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
+                                        env_name=env_name, alg_name=alg_name, file_path=path_name)
             
     
     
-    # for env_name in ["stochatsic_positive_mdp"]:
-    #     for alg_name in ["dqn"]:
-    #     # for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
+    for env_name in ["stochatsic_positive_mdp"]:
+        for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
 
-    #         if alg_name in ["dqn", "ppo"]:
-    #             training_epoch = 5000
-    #         elif alg_name == "a2c":
-    #             training_epoch = 20000
-    #         elif alg_name == "vpg":
-    #             training_epoch = 20000
+            if alg_name in ["dqn", "ppo"]:
+                training_epoch = 5000
+            elif alg_name == "a2c":
+                training_epoch = 20000
+            elif alg_name == "vpg":
+                training_epoch = 20000
 
-    #         zero_reward_list = []
-    #         non_zero_reward_list = []
+            zero_reward_list = []
+            non_zero_reward_list = []
 
-    #         zero_count_list = []
-    #         non_zero_count_list = []
+            zero_count_list = []
+            non_zero_count_list = []
 
-    #         param_dict = None
+            param_dict = None
 
-    #         for random_seed in [0,1,2,]:
-    #             for zero_non_zero_flag in ["non_zero", "zero"]:
-    #                 reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
-    #                                                                       algorithm_name=alg_name, 
-    #                                                                       zero_non_zero_flag=zero_non_zero_flag, 
-    #                                                                       training_epoch=training_epoch)
+            for random_seed in [0,1,2,]:
+                for zero_non_zero_flag in ["non_zero", "zero"]:
+                    reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
+                                                                          algorithm_name=alg_name, 
+                                                                          zero_non_zero_flag=zero_non_zero_flag, 
+                                                                          training_epoch=training_epoch)
                     
-    #                 if zero_non_zero_flag == "zero":
-    #                     zero_reward_list.append(reward_list)
-    #                     zero_count_list.append(count_list)
-    #                 else:
-    #                     non_zero_reward_list.append(reward_list)
-    #                     non_zero_count_list.append(count_list)
+                    if zero_non_zero_flag == "zero":
+                        zero_reward_list.append(reward_list)
+                        zero_count_list.append(count_list)
+                    else:
+                        non_zero_reward_list.append(reward_list)
+                        non_zero_count_list.append(count_list)
 
-    #         pickle.dump(
-    #             {
-    #                 "zero_reward_list": zero_reward_list,
-    #                 "zero_count_list": zero_count_list,
-    #                 "non_zero_reward_list": non_zero_reward_list,
-    #                 "non_zero_count_list": non_zero_count_list,
-    #                 "param_dict": param_dict
-    #             },
-    #             open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
-    #         )
+            pickle.dump(
+                {
+                    "zero_reward_list": zero_reward_list,
+                    "zero_count_list": zero_count_list,
+                    "non_zero_reward_list": non_zero_reward_list,
+                    "non_zero_count_list": non_zero_count_list,
+                    "param_dict": param_dict
+                },
+                open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
+            )
 
-    #         plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
-    #                                     env_name=env_name, alg_name=alg_name, file_path=path_name)
+            plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
+                                        env_name=env_name, alg_name=alg_name, file_path=path_name)
 
     
-    # for env_name in ["stochatsic_negative_mdp"]:
-    #     for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
-    #         training_epoch = 5000
+    for env_name in ["stochatsic_negative_mdp"]:
+        for alg_name in ["vpg", "a2c", "ppo", "dqn"]:
+            training_epoch = 5000
 
-    #         zero_reward_list = []
-    #         non_zero_reward_list = []
+            zero_reward_list = []
+            non_zero_reward_list = []
 
-    #         zero_count_list = []
-    #         non_zero_count_list = []
+            zero_count_list = []
+            non_zero_count_list = []
 
-    #         param_dict = None
+            param_dict = None
 
-    #         for random_seed in range(5):
-    #             for zero_non_zero_flag in ["non_zero", "zero"]:
-    #                 reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
-    #                                                                       algorithm_name=alg_name, 
-    #                                                                       zero_non_zero_flag=zero_non_zero_flag, 
-    #                                                                       training_epoch=training_epoch)
+            for random_seed in range(5):
+                for zero_non_zero_flag in ["non_zero", "zero"]:
+                    reward_list, count_list, param_dict = get_reward_list(random_seed=random_seed, env_name=env_name, 
+                                                                          algorithm_name=alg_name, 
+                                                                          zero_non_zero_flag=zero_non_zero_flag, 
+                                                                          training_epoch=training_epoch)
                     
-    #                 if zero_non_zero_flag == "zero":
-    #                     zero_reward_list.append(reward_list)
-    #                     zero_count_list.append(count_list)
-    #                 else:
-    #                     non_zero_reward_list.append(reward_list)
-    #                     non_zero_count_list.append(count_list)
+                    if zero_non_zero_flag == "zero":
+                        zero_reward_list.append(reward_list)
+                        zero_count_list.append(count_list)
+                    else:
+                        non_zero_reward_list.append(reward_list)
+                        non_zero_count_list.append(count_list)
 
-    #         pickle.dump(
-    #             {
-    #                 "zero_reward_list": zero_reward_list,
-    #                 "zero_count_list": zero_count_list,
-    #                 "non_zero_reward_list": non_zero_reward_list,
-    #                 "non_zero_count_list": non_zero_count_list,
-    #                 "param_dict": param_dict
-    #             },
-    #             open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
-    #         )
+            pickle.dump(
+                {
+                    "zero_reward_list": zero_reward_list,
+                    "zero_count_list": zero_count_list,
+                    "non_zero_reward_list": non_zero_reward_list,
+                    "non_zero_count_list": non_zero_count_list,
+                    "param_dict": param_dict
+                },
+                open("./pickle_data/" + env_name + "_" + alg_name + "_result.pl", "wb")
+            )
 
-    #         plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
-    #                                     env_name=env_name, alg_name=alg_name, file_path=path_name)
+            plt_accumulate_reward_dynamics(zero_reward_list=zero_reward_list, non_zero_reward_list=non_zero_reward_list, 
+                                        env_name=env_name, alg_name=alg_name, file_path=path_name)
             
             
     
